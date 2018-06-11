@@ -1,0 +1,65 @@
+/*******************************************************************************************/
+// Setup
+
+var num_states = 4;
+
+function setup(){
+  for(var i = 0; i < num_states; i++){ states_array.push(new State('State '+(i+1), ambient.p, ambient.v, ambient.T)); }
+  processes_array.push( new Isobaric_process('Process 0-1', states_array[0], states_array[1]) );
+  processes_array.push( new Adiabatic_process('Process 1-2', states_array[1], states_array[2]) );
+  processes_array.push( new Isobaric_process('Process 2-3', states_array[2], states_array[3]) );
+  processes_array.push( new Adiabatic_process('Process 3-0', states_array[3], states_array[0]) );
+  createHTMLElements();
+  createEvents();
+}
+
+/*******************************************************************************************/
+// Create HTML Elements
+
+function createHTMLElements(){
+  states_array.forEach((state,i) => {
+    var card = d3.select('#right_panel').append('div').attrs({ class: 'card' });
+    card.append('div').attrs({ class: 'card-header' }).html('State ' + (i+1));
+
+    var card_body = card.append('div').attrs({ class: 'card-body text-justify' });
+
+    var obj = {};
+    [{ param: 'p', unit: 'kPa' }, { param: 'v', unit: 'm^3/kg' }, { param: 'T', unit: 'K' }].map(d => {
+      obj[d.param] = {};
+      obj[d.param].div = card_body.append('div').attrs({ class: 'pb-2' });
+      obj[d.param].checkbox = obj[d.param].div.append('input').attrs({ type: 'checkbox', class: 'checkbox', param: d.param }).data([state]);
+      obj[d.param].div.append('span').attrs({ class: 'px-2' }).html('(' +d.param+ ':)');
+      obj[d.param].slider = obj[d.param].div.append('input').attrs({ type: 'range', class: 'slider', param: d.param, min: params[d.param].min, max: params[d.param].max, step: params[d.param].step }).data([state]);
+      obj[d.param].input = obj[d.param].div.append('input').attrs({ type: 'number', class: 'input mx-2', param: d.param }).data([state]);
+      obj[d.param].div.append('span').html('(' +d.unit+ ')');
+    });
+
+    state.dom = obj;
+  })
+}
+
+/*******************************************************************************************/
+// Create Events
+
+function createEvents(){
+  states_array.forEach(state => {
+    Object.keys(params).forEach(param => {
+
+      /* Checkbox events */
+      state.dom[param].checkbox.on('input', function(data){
+        state.checked[param] = this.checked;
+        if(this.checked == true){ state[param] = ambient[param]; }
+        assignKnowns(); compute();
+      })
+      /* Checkbox events */
+
+      /* Slider events */
+      state.dom[param].slider.on('input', function(data){
+        state[param] = this.value;
+        compute();
+      })
+      /* Slider events */
+
+    })
+  })
+}
