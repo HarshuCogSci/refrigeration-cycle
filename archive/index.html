@@ -1,0 +1,214 @@
+<html lang="en">
+<head>
+  <title>Thermodynamic Processes</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0"/>
+</head>
+
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script src="https://d3js.org/d3-selection-multi.v1.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+<script type="text/x-mathjax-config"> MathJax.Hub.Config({ extensions: ["tex2jax.js"], jax: ["input/TeX","output/HTML-CSS"], tex2jax: { inlineMath: [["\(","\)"]] } }); </script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+<link rel="stylesheet" href="stylesheet.css">
+
+<script src = "state.js"></script>
+<script src = "processes.js"></script>
+<script src = "graph.js"></script>
+
+<body>
+  <div class = 'container text-center'>
+    <div class = 'my-3 heading'> <h4>Thermodynamic Processes<h4> </div>
+      <div class = 'row'>
+
+        <!-- Left Panel -->
+        <div class = 'col-md-6' id = 'left_panel'>
+          <div><svg id = 'graph' width = '500px' height = '500px'></svg></div>
+
+          <div class = 'mx-5 text-left mt-3'>
+            <div> y-Axis:
+              <select id = 'yAxis_var'>
+                <option value = 'p' selected>Pressure</option>
+                <option value = 'v'>Volume</option>
+                <option value = 'T'>Temperature</option>
+              </select>
+            </div>
+
+            <div class = 'mt-2'> x-Axis:
+              <select id = 'xAxis_var'>
+                <option value = 'p'>Pressure</option>
+                <option value = 'v' selected>Volume</option>
+                <option value = 'T'>Temperature</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <!-- Left Panel -->
+
+        <!-- Right Panel -->
+        <div class = 'col-md-6' id = 'right_panel'>
+          <div class = 'row mt-4'>
+
+            <!-- State 1 -->
+            <div class = 'col-md-12 pt-2'>
+              <div class = 'card'>
+                <div class = 'card-header'>State 1</div>
+                <div class = 'card-body text-justify'>
+                  <div style = 'margin-left: 0%'>
+
+                    <div>
+                      <input id = 's1_p_check' class = 's1_check s_check' type = 'checkbox' data = 'p' state = '1'></input>
+                      <span>(p:) </span>
+                      <input id = 's1_p_slider' class = 's1_slider s_slider' type = 'range' data = 'p' state = '1'></input>
+                      <input id = 's1_p_input' class = 's1_input s_input' type = 'number' data = 'p' state = '1'></input>
+                      (kPa)
+                    </div>
+
+                    <div class = 'my-3'>
+                      <input id = 's1_v_check' class = 's1_check s_check' type = 'checkbox' data = 'v' state = '1'></input>
+                      <span>(v:) </span>
+                      <input id = 's1_v_slider' class = 's1_slider s_slider' type = 'range' data = 'v' state = '1'></input>
+                      <input id = 's1_v_input' class = 's1_input s_input' type = 'number' data = 'v' state = '1'></input>
+                      (m^3/kg)
+                    </div>
+
+                    <div>
+                      <input id = 's1_T_check' class = 's1_check s_check' type = 'checkbox' data = 'T' state = '1'></input>
+                      <span>(T:) </span>
+                      <input id = 's1_T_slider' class = 's1_slider s_slider' type = 'range' data = 'T' state = '1'></input>
+                      <input id = 's1_T_input' class = 's1_input s_input' type = 'number' data = 'T' state = '1'></input>
+                      (K)
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- State 1 -->
+
+            <!-- State 2 -->
+            <div class = 'col-md-12 pt-2'>
+              <div class = 'card'>
+                <div class = 'card-header'>State 2</div>
+                <div class = 'card-body text-justify'>
+                  <div style = 'margin-left: 0%'>
+
+                    <div>
+                      <input id = 's2_p_check' class = 's2_check s_check' type = 'checkbox' data = 'p' state = '2'></input>
+                      <span>(p:) </span>
+                      <input id = 's2_p_slider' class = 's2_slider s_slider' type = 'range' data = 'p' state = '2'></input>
+                      <input id = 's2_p_input' class = 's2_input s_input' type = 'number' data = 'p' state = '2'></input>
+                      (kPa)
+                    </div>
+
+                    <div class = 'my-3'>
+                      <input id = 's2_v_check' class = 's2_check s_check' type = 'checkbox' data = 'v' state = '2'></input>
+                      <span>(v:) </span>
+                      <input id = 's2_v_slider' class = 's2_slider s_slider' type = 'range' data = 'v' state = '2'></input>
+                      <input id = 's2_v_input' class = 's2_input s_input' type = 'number' data = 'v' state = '2'></input>
+                      (m^3/kg)
+                    </div>
+
+                    <div>
+                      <input id = 's2_T_check' class = 's2_check s_check' type = 'checkbox' data = 'T' state = '2'></input>
+                      <span>(T:) </span>
+                      <input id = 's2_T_slider' class = 's2_slider s_slider' type = 'range' data = 'T' state = '2'></input>
+                      <input id = 's2_T_input' class = 's2_input s_input' type = 'number' data = 'T' state = '2'></input>
+                      (K)
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- State 2 -->
+
+            <!-- State 3 -->
+            <div class = 'col-md-12 pt-2'>
+              <div class = 'card'>
+                <div class = 'card-header'>State 3</div>
+                <div class = 'card-body text-justify'>
+                  <div style = 'margin-left: 0%'>
+
+                    <div>
+                      <input id = 's3_p_check' class = 's3_check s_check' type = 'checkbox' data = 'p' state = '3'></input>
+                      <span>(p:) </span>
+                      <input id = 's3_p_slider' class = 's3_slider s_slider' type = 'range' data = 'p' state = '3'></input>
+                      <input id = 's3_p_input' class = 's3_input s_input' type = 'number' data = 'p' state = '3'></input>
+                      (kPa)
+                    </div>
+
+                    <div class = 'my-3'>
+                      <input id = 's3_v_check' class = 's3_check s_check' type = 'checkbox' data = 'v' state = '3'></input>
+                      <span>(v:) </span>
+                      <input id = 's3_v_slider' class = 's3_slider s_slider' type = 'range' data = 'v' state = '3'></input>
+                      <input id = 's3_v_input' class = 's3_input s_input' type = 'number' data = 'v' state = '3'></input>
+                      (m^3/kg)
+                    </div>
+
+                    <div>
+                      <input id = 's3_T_check' class = 's3_check s_check' type = 'checkbox' data = 'T' state = '3'></input>
+                      <span>(T:) </span>
+                      <input id = 's3_T_slider' class = 's3_slider s_slider' type = 'range' data = 'T' state = '3'></input>
+                      <input id = 's3_T_input' class = 's3_input s_input' type = 'number' data = 'T' state = '3'></input>
+                      (K)
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- State 3 -->
+
+            <!-- State 4 -->
+            <div class = 'col-md-12 pt-2'>
+              <div class = 'card'>
+                <div class = 'card-header'>State 4</div>
+                <div class = 'card-body text-justify'>
+                  <div style = 'margin-left: 0%'>
+
+                    <div>
+                      <input id = 's4_p_check' class = 's4_check s_check' type = 'checkbox' data = 'p' state = '4'></input>
+                      <span>(p:) </span>
+                      <input id = 's4_p_slider' class = 's4_slider s_slider' type = 'range' data = 'p' state = '4'></input>
+                      <input id = 's4_p_input' class = 's4_input s_input' type = 'number' data = 'p' state = '4'></input>
+                      (kPa)
+                    </div>
+
+                    <div class = 'my-3'>
+                      <input id = 's4_v_check' class = 's4_check s_check' type = 'checkbox' data = 'v' state = '4'></input>
+                      <span>(v:) </span>
+                      <input id = 's4_v_slider' class = 's4_slider s_slider' type = 'range' data = 'v' state = '4'></input>
+                      <input id = 's4_v_input' class = 's4_input s_input' type = 'number' data = 'v' state = '4'></input>
+                      (m^3/kg)
+                    </div>
+
+                    <div>
+                      <input id = 's4_T_check' class = 's4_check s_check' type = 'checkbox' data = 'T' state = '4'></input>
+                      <span>(T:) </span>
+                      <input id = 's4_T_slider' class = 's4_slider s_slider' type = 'range' data = 'T' state = '4'></input>
+                      <input id = 's4_T_input' class = 's4_input s_input' type = 'number' data = 'T' state = '4'></input>
+                      (K)
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- State 4 -->
+
+          </div>
+        </div>
+        <!-- Right Panel -->
+
+      </div>
+  </div>
+</body>
+
+<script src = "index.js"></script>
