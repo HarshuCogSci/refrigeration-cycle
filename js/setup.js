@@ -55,10 +55,17 @@ function createEvents(){
 
       /* Slider events */
       state.dom[param].slider.on('input', function(data){
-        state[param] = this.value;
+        state[param] = parseFloat(this.value);
         compute();
       })
       /* Slider events */
+
+      /* Input events */
+      state.dom[param].input.on('input', function(data){
+        state[param] = parseFloat(this.value);
+        compute();
+      })
+      /* Input events */
 
     })
   })
