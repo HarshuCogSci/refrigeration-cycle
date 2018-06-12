@@ -6,7 +6,10 @@ function createGraph(){
   var state_points = {
     x: [],
     y: [],
-    mode: 'markers', name: 'states'
+    mode: 'markers+text', name: 'states',
+    text: ['State 1', 'State 2', 'State 3', 'State 4'],
+    textposition: 'top right',
+    textfont: { family: 'serif, sans-serif' },
   }
   var data = [state_points];
 
