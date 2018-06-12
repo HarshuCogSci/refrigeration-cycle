@@ -2,7 +2,8 @@
 // Update
 
 function updateDOM(){
-  states_array.forEach(d => { d.updateDOM(); })
+  states_array.forEach(d => { d.updateDOM(); });
+  updateGraph();
 }
 
 /*******************************************************************************************/

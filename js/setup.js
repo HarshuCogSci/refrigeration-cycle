@@ -11,6 +11,7 @@ function setup(){
   processes_array.push( new Adiabatic_process('Process 4-1', states_array[3], states_array[0]) );
   createHTMLElements();
   createEvents();
+  createGraph();
 }
 
 /*******************************************************************************************/
@@ -18,7 +19,7 @@ function setup(){
 
 function createHTMLElements(){
   states_array.forEach((state,i) => {
-    var card = d3.select('#right_panel').append('div').attrs({ class: 'card' });
+    var card = d3.select('#controls_panel').append('div').attrs({ class: 'col-md-6 card' });
     card.append('div').attrs({ class: 'card-header' }).html('State ' + (i+1));
 
     var card_body = card.append('div').attrs({ class: 'card-body text-justify' });
