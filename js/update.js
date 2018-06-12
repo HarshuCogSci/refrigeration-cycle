@@ -38,8 +38,6 @@ function compute(){
     states_array.forEach((state,i) => {
       Object.keys(params).forEach((param,j) => { if(state.computed[param] != archive_computed[i][j]){ change_toggle = true; } })
     })
-
-    console.log(change_toggle);
   }
   /* Assign computed */
 

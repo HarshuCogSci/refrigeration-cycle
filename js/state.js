@@ -46,7 +46,23 @@ State.prototype.getKnownCount = function(){
 /*******************************************************************************************/
 
 State.prototype.compute = function(){
-  // this.params.forEach()
+  if(this.determined_by.p == 'state' && this.computed.p == false){
+    if(this.computed.v == true && this.computed.T == true){ this.p = getPressure(this.v, this.T); this.computed.p = true; }
+  }
+
+  if(this.determined_by.v == 'state' && this.computed.v == false){
+    if(this.computed.p == true && this.computed.T == true){ this.v = getVolume(this.p, this.T); this.computed.v = true; }
+  }
+
+  if(this.determined_by.T == 'state' && this.computed.T == false){
+    if(this.computed.p == true && this.computed.v == true){ this.T = getTemperature(this.p, this.v); this.computed.T = true; }
+  }
+}
+
+State.prototype.getComputedCount = function(){
+  var count = 0;
+  this.params.forEach(param => { if(this.computed[param] == true){ count++; } })
+  return count
 }
 
 /*******************************************************************************************/
