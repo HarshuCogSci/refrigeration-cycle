@@ -28,48 +28,7 @@ Adiabatic_process.prototype.assignKnowns = function(){
 Adiabatic_process.prototype.compute = function(){
 
   if(this.input.getComputedCount() == 3){
-
     this.assign_values_adiabatic_process('input', 'output');
-
-    // /* Finding p of output */
-    // if(this.output.determined_by.p == 'input' && this.output.computed.p == false){
-    //   if(this.output.computed.v == true){
-    //     this.output.p = get_p_from_pv_relation(this.input.p, this.input.v, this.output.v);
-    //     this.output.computed.p = true;
-    //   }
-    //   else if(this.output.computed.T == true){
-    //     this.output.p = get_p_from_pT_relation(this.input.p, this.input.T, this.output.T);
-    //     this.output.computed.p = true;
-    //   }
-    // }
-    // /* Finding p of output */
-    //
-    // /* Finding v of output */
-    // if(this.output.determined_by.v == 'input' && this.output.computed.v == false){
-    //   if(this.output.computed.p == true){
-    //     this.output.v = get_v_from_pv_relation(this.input.p, this.input.v, this.output.p);
-    //     this.output.computed.v = true;
-    //   }
-    //   else if(this.output.computed.T == true){
-    //     this.output.v = get_v_from_vT_relation(this.input.v, this.input.T, this.output.T);
-    //     this.output.computed.v = true;
-    //   }
-    // }
-    // /* Finding v of output */
-    //
-    // /* Finding T of output */
-    // if(this.output.determined_by.T == 'input' && this.output.computed.T == false){
-    //   if(this.output.computed.p == true){
-    //     this.output.T = get_T_from_pT_relation(this.input.p, this.input.T, this.output.p);
-    //     this.output.computed.T = true;
-    //   }
-    //   else if(this.output.computed.v == true){
-    //     this.output.T = get_T_from_vT_relation(this.input.v, this.input.T, this.output.v);
-    //     this.output.computed.T = true;
-    //   }
-    // }
-    // /* Finding T of output */
-
   }
 
   else if(this.output.getComputedCount() == 3){
