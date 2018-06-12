@@ -70,4 +70,17 @@ function createEvents(){
 
     })
   })
+
+  d3.select('#y_axis_menu').on('change', function(){
+    graph_var.y = this.value;
+    createGraph();
+    updateGraph();
+  })
+
+  d3.select('#x_axis_menu').on('change', function(){
+    graph_var.x = this.value;
+    createGraph();
+    updateGraph();
+  })
+
 }

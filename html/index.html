@@ -26,6 +26,25 @@
   <div class="container text-center">
     <div class='my-3 heading'> <h4>Refrigeration Cycle<h4> </div>
     <div id="graph_panel"></div>
+    <div class="my-2">
+
+      <span class='mx-1'> y-axis:
+        <select id="y_axis_menu">
+          <option value='p' selected>Pressure</option>
+          <option value='v'>Volume</option>
+          <option value='T'>Temperature</option>
+        </select>
+      </span>
+
+      <span class='mx-1'> x-axis:
+        <select id="x_axis_menu">
+          <option value='p'>Pressure</option>
+          <option value='v' selected>Volume</option>
+          <option value='T'>Temperature</option>
+        </select>
+      </span>
+
+    </div>
     <div class="row" id="controls_panel"></div>
   </div>
 </body>

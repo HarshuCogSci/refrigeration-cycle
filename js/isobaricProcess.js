@@ -45,7 +45,7 @@ Isobaric_process.prototype.compute = function(){
     var v_scale = d3.scaleLinear().domain([0, num_points_graph-1]).range([this.input.v, this.output.v]);
     this.trajectory.v = d3.range(num_points_graph).map(d => { return v_scale(d) });
 
-    this.trajectory.T = numeric.div(numeric.mul(this.trajectory.p, this.trajectory.v), R_air);
+    this.trajectory.T = numeric.div(numeric.mul(this.trajectory.p, this.trajectory.v), R_air/1000);
     this.trajectory_computed = true;
   }
 }
