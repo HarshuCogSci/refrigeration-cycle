@@ -5,6 +5,8 @@ function Adiabatic_process(id, input, output){
   this.id = id;
   this.input = input; this.output = output;
   input.to = this; output.from = this;
+  this.trajectory = { p: [], v: [], T: [] };
+  this.trajectory_computed = false;
 }
 
 /**************************************************************************************************/
@@ -35,6 +37,19 @@ Adiabatic_process.prototype.compute = function(){
     this.assign_values_adiabatic_process('output', 'input');
   }
 
+  if(this.input.getComputedCount() == 3 && this.output.getComputedCount() == 3 && this.trajectory_computed == false){
+    var constant = this.input.p*Math.pow(this.input.v, γ_air);
+
+    var p_scale = d3.scaleLinear().domain([0, num_points_graph-1]).range([this.input.p, this.output.p]);
+    this.trajectory.p = d3.range(num_points_graph).map(d => { return p_scale(d) });
+
+    this.trajectory.v = numeric.pow(numeric.div(constant, this.trajectory.p), 1/γ_air);
+    // var v_scale = d3.scaleLinear().domain([0, num_points_graph-1]).range([this.input.v, this.output.v]);
+    // this.trajectory.v = d3.range(num_points_graph).map(d => { return v_scale(d) });
+
+    this.trajectory.T = numeric.div(numeric.mul(this.trajectory.p, this.trajectory.v), R_air);
+    this.trajectory_computed = true;
+  }
 }
 
 /**************************************************************************************************/

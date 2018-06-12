@@ -5,10 +5,10 @@ var num_states = 4;
 
 function setup(){
   for(var i = 0; i < num_states; i++){ states_array.push(new State('State '+(i+1), ambient.p, ambient.v, ambient.T)); }
-  processes_array.push( new Isobaric_process('Process 1-2', states_array[0], states_array[1]) );
-  processes_array.push( new Adiabatic_process('Process 2-3', states_array[1], states_array[2]) );
-  processes_array.push( new Isobaric_process('Process 3-4', states_array[2], states_array[3]) );
-  processes_array.push( new Adiabatic_process('Process 4-1', states_array[3], states_array[0]) );
+  processes_array.push( new Isobaric_process('Evaporator', states_array[0], states_array[1]) );
+  processes_array.push( new Adiabatic_process('Compressor', states_array[1], states_array[2]) );
+  processes_array.push( new Isobaric_process('Condenser', states_array[2], states_array[3]) );
+  processes_array.push( new Adiabatic_process('Throttle', states_array[3], states_array[0]) );
   createHTMLElements();
   createEvents();
   createGraph();

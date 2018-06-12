@@ -8,14 +8,11 @@ function createGraph(){
     y: [],
     mode: 'markers', name: 'states'
   }
+  var data = [state_points];
 
-  var processes = {
-    x: [],
-    y: [],
-    mode: 'lines', name: 'processes'
-  }
+  var processes_data_arry = processes_array.map(process => { return { x: [], y: [], mode: 'lines', name: process.id } })
+  processes_data_arry.forEach(process => { data.push(process) });
 
-  var data = [state_points, processes];
   var layout = { xaxis: { title: graph_var.x+' →' }, yaxis: { title: graph_var.y+' →' } };
   Plotly.newPlot('graph_panel', data, layout, { staticPlot: true });
 }
@@ -26,6 +23,10 @@ function updateGraph(){
   data[0].x = states_array.map(state => { return state[graph_var.x] });
   data[0].y = states_array.map(state => { return state[graph_var.y] });
 
-  console.log(data);
+  processes_array.forEach((process,i) => {
+    data[i+1].x = process.trajectory[graph_var.x];
+    data[i+1].y = process.trajectory[graph_var.y];
+  })
+
   Plotly.redraw('graph_panel');
 }

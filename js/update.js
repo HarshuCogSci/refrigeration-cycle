@@ -20,6 +20,11 @@ function compute(){
   })
   /* Setup computed = true for the checked boxes and false for others */
 
+  processes_array.forEach(process => {
+    process.trajectory = { p: [], v: [], T: [] };
+    process.trajectory_computed = false;
+  })
+
   /* Assign computed */
   var change_toggle = true, archive_computed = [];
   while(change_toggle){

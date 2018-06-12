@@ -12,6 +12,8 @@ var R_air = 287, γ_air = 1.4;
 var ambient = { p: 100, T: 300 };
 ambient.v = getVolume(ambient.p, ambient.T);
 
+var num_points_graph = 100;
+
 /*******************************************************************************************/
 // Document Ready
 
