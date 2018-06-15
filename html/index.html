@@ -24,9 +24,16 @@
 
 <body>
   <div class="container text-center">
-    <div class='my-3 heading'> <h4>Refrigeration Cycle<h4> </div>
-    <div> <svg id='schematic_svg' width='800px' height='500px'></svg> </div>
-    <div id="graph_panel"></div>
+    <div class='mt-3 heading'> <h4>Refrigeration Cycle<h4> </div>
+    <div class='row'>
+      <div class='col-md-6'> <svg id='schematic_svg' width='400px' height='400px'></svg> </div>
+      <div class='col-md-6'> <div id='graph_panel'></div> </div>
+    </div>
+
+    <!-- <div> <svg id='schematic_svg' width='800px' height='500px'></svg> </div> -->
+    <!-- <div id="graph_panel"></div> -->
+
+    <!-- Graph Controls -->
     <div class="my-2">
 
       <span class='mx-1'> y-axis:
@@ -46,6 +53,8 @@
       </span>
 
     </div>
+    <!-- Graph Controls -->
+
     <div class="row" id="controls_panel"></div>
   </div>
 </body>

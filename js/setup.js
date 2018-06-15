@@ -13,6 +13,10 @@ function setup(){
   createHTMLElements();
   createEvents();
   createGraph();
+  // $('[data-toggle="tooltip"]').tooltip();
+  // $('[data-toggle="tooltip"]').tooltip('show');
+  // $('[data-toggle="popover"]').popover()
+  $('[data-toggle="popover"]').popover('show')
 }
 
 /*******************************************************************************************/

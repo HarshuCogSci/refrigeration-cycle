@@ -18,6 +18,7 @@ function createSchematic(){
     .attrs({ x: -0.5*evaporator.size, y: -0.25*evaporator.size, width: evaporator.size, height: 0.5*evaporator.size, rx: '2%', ry: '2%' })
     .styles({ fill: 'white', stroke: 'black' });
 
+  evaporator.text = evaporator.g.append('text').attrs({ y: 0.55*evaporator.size }).styles({ 'text-anchor': 'middle', fill: 'gray' }).text('Evaporator');
   evaporator.input_x = evaporator.cx - 0.5*evaporator.size;
   evaporator.input_y = evaporator.cy;
   evaporator.output_x = evaporator.cx + 0.5*evaporator.size;
@@ -35,6 +36,7 @@ function createSchematic(){
     .attrs({ d: line(temp) })
     .styles({ fill: 'white', stroke: 'black' });
 
+  compressor.text = compressor.g.append('text').attrs({ x: -0.6*compressor.size }).styles({ 'text-anchor': 'end', fill: 'gray' }).text('Compressor');
   compressor.input_x = compressor.cx - 0.5*compressor.size;
   compressor.input_y = compressor.cy + 0.8*compressor.size;
   compressor.output_x = compressor.cx + 0.5*compressor.size;
@@ -50,6 +52,7 @@ function createSchematic(){
     .attrs({ x: -0.5*condenser.size, y: -0.25*condenser.size, width: condenser.size, height: 0.5*condenser.size, rx: '2%', ry: '2%' })
     .styles({ fill: 'white', stroke: 'black' });
 
+  condenser.text = condenser.g.append('text').attrs({ y: 0.55*condenser.size }).styles({ 'text-anchor': 'middle', fill: 'gray' }).text('Condenser');
   condenser.input_x = condenser.cx + 0.5*condenser.size;
   condenser.input_y = condenser.cy;
   condenser.output_x = condenser.cx - 0.5*condenser.size;
@@ -79,6 +82,7 @@ function createSchematic(){
     .attrs({ d: line(temp) })
     .styles({ fill: 'white', stroke: 'black' });
 
+  throttle.text = throttle.g.append('text').attrs({ x: -0.6*throttle.size }).styles({ 'text-anchor': 'end', fill: 'gray' }).text('Throttle');
   throttle.input_x = throttle.cx;
   throttle.input_y = throttle.cy - 0.5*throttle.size;
   throttle.output_x = throttle.cx;
@@ -90,7 +94,7 @@ function createSchematic(){
     .attrs({ d: line(temp) })
     .styles({ stroke: 'black', fill: 'none' });
   var temp_circle = svg.append('circle')
-    .attrs({ cx: temp[1].x, cy: temp[1].y, r: 3,  })
+    .attrs({ cx: temp[1].x, cy: temp[1].y, r: 3, 'data-toggle': 'popover', 'data-placement': 'right', 'data-content': 'State 1' })
     .styles({ fill: 'black' });
   state_points.push(temp_circle);
 
@@ -100,7 +104,7 @@ function createSchematic(){
     .attrs({ d: line(temp) })
     .styles({ stroke: 'black', fill: 'none' });
   var temp_circle = svg.append('circle')
-    .attrs({ cx: temp[1].x, cy: temp[1].y, r: 3,  })
+  .attrs({ cx: temp[1].x, cy: temp[1].y, r: 3, 'data-toggle': 'popover', 'data-placement': 'right', 'data-content': 'State 2' })
     .styles({ fill: 'black' });
   state_points.push(temp_circle);
 
@@ -110,7 +114,7 @@ function createSchematic(){
     .attrs({ d: line(temp) })
     .styles({ stroke: 'black', fill: 'none' });
   var temp_circle = svg.append('circle')
-    .attrs({ cx: temp[1].x, cy: temp[1].y, r: 3,  })
+    .attrs({ cx: temp[1].x, cy: temp[1].y, r: 3, 'data-toggle': 'popover', 'data-placement': 'left', 'data-content': 'State 3' })
     .styles({ fill: 'black' });
   state_points.push(temp_circle);
 
@@ -120,7 +124,7 @@ function createSchematic(){
     .attrs({ d: line(temp) })
     .styles({ stroke: 'black', fill: 'none' });
   var temp_circle = svg.append('circle')
-    .attrs({ cx: temp[1].x, cy: temp[1].y, r: 3,  })
+    .attrs({ cx: temp[1].x, cy: temp[1].y, r: 3, 'data-toggle': 'popover', 'data-placement': 'left', 'data-content': 'State 4' })
     .styles({ fill: 'black' });
   state_points.push(temp_circle);
 }

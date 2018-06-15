@@ -13,12 +13,20 @@ function createGraph(){
   }
   var data = [state_points];
 
-  var processes_data_arry = processes_array.map(process => { return { x: [], y: [], mode: 'lines', name: process.id } })
+  var processes_data_arry = processes_array.map(process => { return { x: [], y: [], mode: 'lines' } })
   processes_data_arry.forEach(process => { data.push(process) });
 
-  var layout = { xaxis: { title: graph_var.x+' →' }, yaxis: { title: graph_var.y+' →' } };
+  var layout = {
+    xaxis: { title: graph_var.x+' →' },
+    yaxis: { title: graph_var.y+' →' },
+    margin: { t: 40, b: 40, l: 40, r: 40 },
+    legend: { orientation: 'h' },
+    showlegend: false,
+  };
   Plotly.newPlot('graph_panel', data, layout, { staticPlot: true });
 }
+
+/**************************************************************************/
 
 function updateGraph(){
   var data = document.getElementById('graph_panel').data;
