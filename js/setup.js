@@ -9,6 +9,7 @@ function setup(){
   processes_array.push( new Adiabatic_process('Compressor', states_array[1], states_array[2]) );
   processes_array.push( new Isobaric_process('Condenser', states_array[2], states_array[3]) );
   processes_array.push( new Adiabatic_process('Throttle', states_array[3], states_array[0]) );
+  createSchematic();
   createHTMLElements();
   createEvents();
   createGraph();
