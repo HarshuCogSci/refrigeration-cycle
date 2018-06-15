@@ -8,6 +8,11 @@ var params = {
   T: {min: 0, max: 500, step: 1, name: 'Temperaure', variable: 'temperature'}
 };
 
+['p', 'v', 'T'].forEach(param => {
+  params[param].graph_min = params[param].min - 10*params[param].step;
+  params[param].graph_max = params[param].max + 10*params[param].step;
+})
+
 var R_air = 287, γ_air = 1.4;
 var ambient = { p: 100, T: 300 };
 ambient.v = getVolume(ambient.p, ambient.T);

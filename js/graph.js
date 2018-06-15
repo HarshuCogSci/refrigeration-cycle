@@ -31,5 +31,19 @@ function updateGraph(){
     data[i+1].y = process.trajectory[graph_var.y];
   })
 
+  var layout = document.getElementById('graph_panel').layout;
+
+  var x_extent = d3.extent(data[0].x);
+  if( x_extent[0] > params[graph_var.x].graph_min ){ x_extent[0] = params[graph_var.x].graph_min };
+  if( x_extent[1] < params[graph_var.x].graph_max ){ x_extent[1] = params[graph_var.x].graph_max };
+  if( x_extent[0] == undefined ){ x_extent[0] = params[graph_var.x].graph_min; x_extent[1] = params[graph_var.x].graph_max; }
+  layout.xaxis.range = x_extent;
+
+  var y_extent = d3.extent(data[0].y);
+  if( y_extent[0] > params[graph_var.y].graph_min ){ y_extent[0] = params[graph_var.y].graph_min; };
+  if( y_extent[1] < params[graph_var.y].graph_max ){ y_extent[1] = params[graph_var.y].graph_max; };
+  if( y_extent[0] == undefined ){ y_extent[0] = params[graph_var.y].graph_min; y_extent[1] = params[graph_var.y].graph_max; }
+  layout.yaxis.range = y_extent;
+
   Plotly.redraw('graph_panel');
 }
