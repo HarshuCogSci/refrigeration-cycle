@@ -16,7 +16,13 @@ function setup(){
   // $('[data-toggle="tooltip"]').tooltip();
   // $('[data-toggle="tooltip"]').tooltip('show');
   // $('[data-toggle="popover"]').popover()
-  $('[data-toggle="popover"]').popover('show')
+  $('[data-toggle="popover"]').popover('show');
+  d3.select('#info_icon').on('click', function(){
+    swal({
+      type: 'info',
+      text: 'Get in touch: harshitagrawal.iitr@gmail.com',
+    });
+  })
 }
 
 /*******************************************************************************************/
